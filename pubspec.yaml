@@ -1,0 +1,54 @@
+name: rouya
+description: "Rouya — رؤيا · Personal achievement tracker"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  provider: ^6.1.2
+
+  # Local storage
+  shared_preferences: ^2.3.2
+
+  # Supabase (quotes database)
+  supabase_flutter: ^2.5.6
+
+  # Notifications
+  flutter_local_notifications: ^17.2.2
+  timezone: ^0.9.4
+
+  # Confetti animation
+  confetti: ^0.7.0
+
+  # Fonts
+  google_fonts: ^6.2.1
+
+  cupertino_icons: ^1.0.8
+
+  image_picker: ^1.1.2
+
+  permission_handler: ^11.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/fonts/
+
+  fonts:
+    - family: NotoKufiArabic
+      fonts:
+        - asset: assets/fonts/NotoKufiArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NotoKufiArabic-Medium.ttf
+          weight: 500
