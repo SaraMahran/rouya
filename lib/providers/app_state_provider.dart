@@ -32,15 +32,9 @@ class AppStateProvider extends ChangeNotifier {
         CategoryModel(id: 'c4', name: 'Side project ships', emoji: '🚀', count: 6,  color: 'accent'),
         CategoryModel(id: 'c5', name: 'Open source PRs',    emoji: '🌿', count: 21, color: 'accent2'),
       ];
-      // interviews = InterviewModel(
-      //   technical: 23,
-      //   hr: 14,
-      //   streak: 12,
-      //   chart: [1, 0, 2, 1, 1, 0, 1, 2, 1, 1, 1, 2, 1, 1],
-      // );
       interviews = InterviewModel(
-        technical: 23,
-        hr: 14,
+        technical: 8,
+        hr: 26,
         streak: 12,
         chart: [1, 0, 2, 1, 1, 0, 1, 2, 1, 1, 1, 2, 1, 1],
         history: [
