@@ -4,7 +4,7 @@ import '../providers/theme_provider.dart';
 import '../theme/rouya_themes.dart';
 import 'dashboard_screen.dart';
 import 'achievements_screen.dart';
-import 'interviews_screen.dart';
+import 'career_screen.dart';
 import 'quotes_screen.dart';
 import 'settings_screen.dart';
 
@@ -23,7 +23,7 @@ class _MainShellState extends State<MainShell> {
     final screens = [
       const DashboardScreen(),
       const AchievementsScreen(),
-      const InterviewsScreen(),
+      const CareerScreen(),
       const QuotesScreen(),
       const SettingsScreen(),
     ];
@@ -56,12 +56,33 @@ class _BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      {'icon': Icons.home_outlined,         'activeIcon': Icons.home_rounded,         'label': 'Home'},
-      {'icon': Icons.star_outline_rounded,  'activeIcon': Icons.star_rounded,         'label': 'Goals'},
-      {'icon': Icons.work_outline_rounded,  'activeIcon': Icons.work_rounded,         'label': 'Interviews'},
-      {'icon': Icons.format_quote_outlined, 'activeIcon': Icons.format_quote_rounded, 'label': 'Quotes'},
-      {'icon': Icons.settings_outlined,     'activeIcon': Icons.settings_rounded,     'label': 'Settings'},
+      {
+        'icon': Icons.home_outlined,
+        'activeIcon': Icons.home_rounded,
+        'label': 'Home',
+      },
+      {
+        'icon': Icons.star_outline_rounded,
+        'activeIcon': Icons.star_rounded,
+        'label': 'Goals',
+      },
+      {
+        'icon': Icons.work_outline_rounded,
+        'activeIcon': Icons.work_rounded,
+        'label': 'Career',
+      },
+      {
+        'icon': Icons.format_quote_outlined,
+        'activeIcon': Icons.format_quote_rounded,
+        'label': 'Quotes',
+      },
+      {
+        'icon': Icons.settings_outlined,
+        'activeIcon': Icons.settings_rounded,
+        'label': 'Settings',
+      },
     ];
+
     return Container(
       decoration: BoxDecoration(
         color: t.navBg,
@@ -94,7 +115,9 @@ class _BottomNav extends StatelessWidget {
                         style: TextStyle(
                           color: active ? t.accent : t.textFaint,
                           fontSize: 10,
-                          fontWeight: active ? FontWeight.w700 : FontWeight.w400,
+                          fontWeight: active
+                              ? FontWeight.w700
+                              : FontWeight.w400,
                           fontFamily: 'Manrope',
                         ),
                       ),

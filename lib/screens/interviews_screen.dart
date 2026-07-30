@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
 import '../providers/app_state_provider.dart';
 import '../theme/rouya_themes.dart';
+import '../models/interview_model.dart';
 
 class InterviewsScreen extends StatelessWidget {
   const InterviewsScreen({super.key});
@@ -92,7 +93,14 @@ class InterviewsScreen extends StatelessWidget {
                         label: 'TECHNICAL',
                         value: iv.technical,
                         color: t.accent,
-                        onLog: () => state.logInterview('technical'),
+                        onLog: () => state.addInterviewRecord(InterviewRecord(
+                          id: 'i${DateTime.now().millisecondsSinceEpoch}',
+                          company: 'Quick log',
+                          role: 'Interview',
+                          type: 'Technical',
+                          date: DateTime.now(),
+                          outcome: 'Pending',
+                        )),
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -102,7 +110,14 @@ class InterviewsScreen extends StatelessWidget {
                         label: 'HR / PERSONAL',
                         value: iv.hr,
                         color: t.accent2,
-                        onLog: () => state.logInterview('hr'),
+                        onLog: () => state.addInterviewRecord(InterviewRecord(
+                          id: 'i${DateTime.now().millisecondsSinceEpoch}',
+                          company: 'Quick log',
+                          role: 'Interview',
+                          type: 'HR',
+                          date: DateTime.now(),
+                          outcome: 'Pending',
+                        )),
                       ),
                     ),
                   ],
@@ -171,7 +186,7 @@ class InterviewsScreen extends StatelessWidget {
                             const SizedBox(width: 10),
                             Expanded(
                               child: Text(
-                                entry.label,
+                                '${entry.company} — ${entry.role}',
                                 style: TextStyle(color: t.text, fontSize: 14),
                               ),
                             ),

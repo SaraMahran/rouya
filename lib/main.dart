@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'providers/theme_provider.dart';
 import 'providers/app_state_provider.dart';
 import './screens/main_shell.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'services/supabase_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +13,12 @@ void main() async {
   final appState = AppStateProvider();
   await appState.init();
 
+
+  // Inside main() before runApp:
+  await Supabase.initialize(
+    url: SupabaseService.supabaseUrl,
+    anonKey: SupabaseService.supabaseKey,
+  );
 
   runApp(
     MultiProvider(
