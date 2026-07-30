@@ -26,11 +26,12 @@ class AppStateProvider extends ChangeNotifier {
     else {
       // Seed data matching the prototype
       categories = [
-        CategoryModel(id: 'c1', name: 'Books finished',     emoji: '📚', count: 14, color: 'accent'),
-        CategoryModel(id: 'c2', name: 'Morning runs',       emoji: '🏃‍♀️', count: 32, color: 'accent2'),
-        CategoryModel(id: 'c3', name: 'Cold plunges',       emoji: '🧊', count: 9,  color: 'gold'),
-        CategoryModel(id: 'c4', name: 'Side project ships', emoji: '🚀', count: 6,  color: 'accent'),
-        CategoryModel(id: 'c5', name: 'Open source PRs',    emoji: '🌿', count: 21, color: 'accent2'),
+        CategoryModel(id: 'c1', name: 'Books finished', emoji: '📚', count: 865, color: 'accent'),
+        CategoryModel(id: 'c2', name: 'Students mentored', emoji: '🎓', count: 130, color: 'accent2'),
+        CategoryModel(id: 'c3', name: 'Projects shipped', emoji: '🚀', count: 12, color: 'gold'),
+        CategoryModel(id: 'c4', name: 'Courses completed', emoji: '🏆', count: 5, color: 'accent'),
+        CategoryModel(id: 'c5', name: 'Technical docs written', emoji: '✍️', count: 17, color: 'accent2'),
+        CategoryModel(id: 'c5', name: 'Arts Classes Attended', emoji: '🎨', count: 7, color: 'accent2'),
       ];
       interviews = InterviewModel(
         technical: 8,
