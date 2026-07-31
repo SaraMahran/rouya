@@ -6,20 +6,45 @@ import '../models/teaching_model.dart';
 class AddStudentForm extends StatefulWidget {
   final RouyaTheme t;
   final AppStateProvider state;
+  final IndividualStudent? existingStudent;
 
-  const AddStudentForm({super.key, required this.t, required this.state});
+  const AddStudentForm({
+    super.key,
+    required this.t,
+    required this.state,
+    this.existingStudent,
+  });
 
   @override
   State<AddStudentForm> createState() => _AddStudentFormState();
 }
 
 class _AddStudentFormState extends State<AddStudentForm> {
-  final _name = TextEditingController();
-  final _subject = TextEditingController();
-  final _notes = TextEditingController();
-  int _progress = 3;
+  late final TextEditingController _name;
+  late final TextEditingController _subject;
+  late final TextEditingController _notes;
+  late int _progress;
 
+  bool get isEditing => widget.existingStudent != null;
   RouyaTheme get t => widget.t;
+
+  @override
+  void initState() {
+    super.initState();
+    final s = widget.existingStudent;
+    _name = TextEditingController(text: s?.name ?? '');
+    _subject = TextEditingController(text: s?.subject ?? '');
+    _notes = TextEditingController(text: s?.notes ?? '');
+    _progress = s?.progressRating ?? 3;
+  }
+
+  @override
+  void dispose() {
+    _name.dispose();
+    _subject.dispose();
+    _notes.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +56,25 @@ class _AddStudentFormState extends State<AddStudentForm> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('New Student',
-                style: TextStyle(color: t.text, fontSize: 22,
-                    fontWeight: FontWeight.w700)),
+            Row(
+              children: [
+                Text(isEditing ? 'Edit Student' : 'New Student',
+                    style: TextStyle(color: t.text, fontSize: 22,
+                        fontWeight: FontWeight.w700)),
+                const Spacer(),
+                if (isEditing)
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                        color: t.accent2Tint,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Text('Editing',
+                        style: TextStyle(color: t.accent2,
+                            fontSize: 11, fontWeight: FontWeight.w600)),
+                  ),
+              ],
+            ),
             const SizedBox(height: 20),
 
             _label('Student Name'),
@@ -67,7 +108,7 @@ class _AddStudentFormState extends State<AddStudentForm> {
             ),
             const SizedBox(height: 14),
 
-            _label('Initial Progress Rating'),
+            _label('Progress Rating'),
             Row(
               children: List.generate(5, (i) =>
                   GestureDetector(
@@ -89,16 +130,27 @@ class _AddStudentFormState extends State<AddStudentForm> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_name.text.trim().isEmpty) return;
-                  widget.state.addStudent(IndividualStudent(
-                    id: 's${DateTime.now().millisecondsSinceEpoch}',
+
+                  final student = IndividualStudent(
+                    id: isEditing
+                        ? widget.existingStudent!.id
+                        : 's${DateTime.now().millisecondsSinceEpoch}',
                     name: _name.text.trim(),
                     subject: _subject.text.trim().isEmpty
                         ? null : _subject.text.trim(),
-                    startDate: DateTime.now(),
+                    startDate: isEditing
+                        ? widget.existingStudent!.startDate
+                        : DateTime.now(),
                     notes: _notes.text.trim().isEmpty
                         ? null : _notes.text.trim(),
                     progressRating: _progress,
-                  ));
+                  );
+
+                  if (isEditing) {
+                    widget.state.updateStudent(student);
+                  } else {
+                    widget.state.addStudent(student);
+                  }
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
@@ -107,8 +159,9 @@ class _AddStudentFormState extends State<AddStudentForm> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14)),
                 ),
-                child: const Text('Save Student',
-                    style: TextStyle(color: Colors.white,
+                child: Text(
+                    isEditing ? 'Save Changes' : 'Save Student',
+                    style: const TextStyle(color: Colors.white,
                         fontSize: 16, fontWeight: FontWeight.w600)),
               ),
             ),

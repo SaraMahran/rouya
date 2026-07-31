@@ -13,130 +13,130 @@ class AchievementsScreen extends StatelessWidget {
     final t = context.watch<ThemeProvider>().theme;
     final state = context.watch<AppStateProvider>();
     return Scaffold(
-        backgroundColor: Colors.transparent,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => _showAddSheet(context, state, t),
-          backgroundColor: t.accent,
-          child: const Icon(Icons.add, color: Colors.white),
-        ),
+      backgroundColor: Colors.transparent,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showAddSheet(context, state, t),
+        backgroundColor: t.accent,
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
 
       body: SafeArea(
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //Header
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Tracking',
-                        style: TextStyle(
-                          color: t.textDim,
-                          fontSize: 12,
-                          letterSpacing: 0.5,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Tracking',
+                          style: TextStyle(
+                            color: t.textDim,
+                            fontSize: 12,
+                            letterSpacing: 0.5,
+                          ),
                         ),
+                        Text(
+                          'Achievements',
+                          style: TextStyle(
+                            color: t.text,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                    //Total badge
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 8,
                       ),
-                      Text(
-                        'Achievements',
+                      decoration: BoxDecoration(
+                        color: t.accentTint,
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(color: t.border),
+                      ),
+                      child: Text(
+                        '${state.totalAchievements} total',
                         style: TextStyle(
-                          color: t.text,
-                          fontSize: 28,
+                          color: t.accent,
+                          fontSize: 13,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              //Categories list
+              Expanded(
+                child: state.categories.isEmpty
+                    ? Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('🌟', style: TextStyle(fontSize: 48)),
+                      const SizedBox(height: 12),
+                      Text(
+                        'No categories yet',
+                        style: TextStyle(
+                          color: t.text,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        'Tap + to create your first one',
+                        style: TextStyle(color: t.textDim, fontSize: 14),
+                      ),
                     ],
                   ),
-                  //Total badge
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      color: t.accentTint,
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(color: t.border),
-                    ),
-                    child: Text(
-                      '${state.totalAchievements} total',
-                      style: TextStyle(
-                        color: t.accent,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
+                )
+                    : ListView.separated(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  itemCount: state.categories.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: 20),
+                  itemBuilder: (ctx, i) {
+                    final cat = state.categories[i];
+                    return _CategoryCard(
+                      t: t,
+                      cat: cat,
+                      onIncrement: () => state.increment(cat.id),
+                      onDecrement: () => state.decrement(cat.id),
+                      onDelete: () => _confirmDelete(
+                        context,
+                        state,
+                        cat.id,
+                        cat.name,
+                        t,
                       ),
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            //Categories list
-            Expanded(
-              child: state.categories.isEmpty
-                  ? Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text('🌟', style: TextStyle(fontSize: 48)),
-                          const SizedBox(height: 12),
-                          Text(
-                            'No categories yet',
-                            style: TextStyle(
-                              color: t.text,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          Text(
-                            'Tap + to create your first one',
-                            style: TextStyle(color: t.textDim, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    )
-                  : ListView.separated(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemCount: state.categories.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 10),
-                      itemBuilder: (ctx, i) {
-                        final cat = state.categories[i];
-                        return _CategoryCard(
-                          t: t,
-                          cat: cat,
-                          onIncrement: () => state.increment(cat.id),
-                          onDecrement: () => state.decrement(cat.id),
-                          onDelete: () => _confirmDelete(
-                            context,
-                            state,
-                            cat.id,
-                            cat.name,
-                            t,
-                          ),
-                        );
-                      },
-                    ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
     );
   }
 
   void _confirmDelete(
-    BuildContext context,
-    AppStateProvider state,
-    String id,
-    String name,
-    RouyaTheme t,
-  ) {
+      BuildContext context,
+      AppStateProvider state,
+      String id,
+      String name,
+      RouyaTheme t,
+      ) {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(

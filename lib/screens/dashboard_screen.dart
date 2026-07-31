@@ -25,11 +25,19 @@ class DashboardScreen extends StatelessWidget {
             const SizedBox(height: 4),
             Row(
               children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 52,
-                  fit: BoxFit.contain,
-                ),
+                Text('Rouya ',
+                    style: TextStyle(
+                      color: t.text, fontSize: 28,
+                      fontFamily: 'Cormorant Garamond',
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w500,
+                    )),
+                Text('رؤيا',
+                    style: TextStyle(
+                      color: t.accent, fontSize: 18,
+                      fontFamily: 'NotoKufiArabic',
+                      fontWeight: FontWeight.w500,
+                    )),
               ],
             ),
             const SizedBox(height: 24),

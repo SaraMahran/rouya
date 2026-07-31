@@ -166,6 +166,29 @@ class AppStateProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateInterviewRecord(InterviewRecord record) {
+    final index = interviews.history
+        .indexWhere((r) => r.id == record.id);
+    if (index != -1) {
+      interviews.history[index] = record;
+      notifyListeners();
+    }
+  }
+
+  void deleteInterviewRecord(String id) {
+    interviews.history.removeWhere((r) => r.id == id);
+    notifyListeners();
+  }
+
+  void deleteProgram(String id) {
+    programs.removeWhere((p) => p.id == id);
+    notifyListeners();
+  }
+
+  void deleteStudent(String id) {
+    students.removeWhere((s) => s.id == id);
+    notifyListeners();
+  }
 
   void addProgram(TeachingProgram program) {
     programs.insert(0, program);
@@ -175,6 +198,22 @@ class AppStateProvider extends ChangeNotifier {
   void addStudent(IndividualStudent student) {
     students.insert(0, student);
     notifyListeners();
+  }
+
+  void updateProgram(TeachingProgram program) {
+    final index = programs.indexWhere((p) => p.id == program.id);
+    if (index != -1) {
+      programs[index] = program;
+      notifyListeners();
+    }
+  }
+
+  void updateStudent(IndividualStudent student) {
+    final index = students.indexWhere((s) => s.id == student.id);
+    if (index != -1) {
+      students[index] = student;
+      notifyListeners();
+    }
   }
 
   //Total achievement count
@@ -189,7 +228,7 @@ class AppStateProvider extends ChangeNotifier {
   String _monthName(int mon) => [
     '', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ][mon];
+  ][mon];
 
 
   Future<void> updateProfileImage(String path) async {
