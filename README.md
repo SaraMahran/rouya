@@ -4,13 +4,13 @@
 
 <h1 align="center">Rouya · رؤيا</h1>
 <p align="center"><em>"Vision, seen" — A personal achievement & career tracker</em></p>
-![img.png](img.png)
+
 <p align="center">
-  <img src="https://img.shields.io/badge/Flutter-3.35-blue?logo=flutter&logoColor=white" />
-  <img src="https://img.shields.io/badge/Dart-3.9-blue?logo=dart&logoColor=white" />
-  <img src="https://img.shields.io/badge/Supabase-connected-green?logo=supabase&logoColor=white" />
-  <img src="https://img.shields.io/badge/Platform-Android-brightgreen?logo=android&logoColor=white" />
-  <img src="https://img.shields.io/badge/Status-In%20Development-orange" />
+  <img src="https://img.shields.io/badge/Flutter-3.35-blue?logo=flutter&logoColor=white" alt="Flutter 3.35" />
+  <img src="https://img.shields.io/badge/Dart-3.9-blue?logo=dart&logoColor=white" alt="Dart 3.9" />
+  <img src="https://img.shields.io/badge/Supabase-connected-green?logo=supabase&logoColor=white" alt="Supabase connected" />
+  <img src="https://img.shields.io/badge/Platform-Android-brightgreen?logo=android&logoColor=white" alt="Platform Android" />
+  <img src="https://img.shields.io/badge/Status-In%20Development-orange" alt="Status In Development" />
 </p>
 
 ---
@@ -221,10 +221,9 @@ flutter build apk --release
 ## Developer
 
 **Sara Ali Mahran**
-Senior Software Engineer · Planning Engineer · Builder
+Senior Software Engineer · Builder
 
 - 🔗 [GitHub](https://github.com/SaraMahran)
-- 💼 Building PESoftware — construction project management platform
 - 🌸 Building Rouya — because growth deserves to be tracked beautifully
 
 ---
