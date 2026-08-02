@@ -41,7 +41,45 @@ https://github.com/SaraMahran/rouya/releases/download/v1.0.0/app-release.apk
 
 ## Screenshots
 
-> *(Screenshots coming soon)*
+### 🏠 Dashboard
+<p align="center">
+  <img src="assets/images/screenshots/Dashboard Feminine Theme.png" width="220" alt="Dashboard - Feminine Power theme"/>
+  <img src="assets/images/screenshots/Dashboard Obsidian Theme.png" width="220" alt="Dashboard - Obsidian theme"/>
+</p>
+
+### 🏆 Achievements
+<p align="center">
+  <img src="assets/images/screenshots/Achievements Feminine Theme.png" width="220" alt="Achievements - Feminine Power theme"/>
+  <img src="assets/images/screenshots/Achievements Obsidian Theme.png" width="220" alt="Achievements - Obsidian theme"/>
+</p>
+
+### 💼 Career — Interviews & Teaching
+<p align="center">
+  <img src="assets/images/screenshots/Interviews Tab.png" width="220" alt="Interviews tab"/>
+  <img src="assets/images/screenshots/Teaching Tab.png" width="220" alt="Teaching tab"/>
+  <img src="assets/images/screenshots/Add New Program.png" width="220" alt="Add new teaching program"/>
+  <img src="assets/images/screenshots/Add New Student.png" width="220" alt="Add new individual student"/>
+  <img src="assets/images/screenshots/Add Program - Student.png" width="220" alt="Add program or student options"/>
+</p>
+
+### ⭐ Candidate Survey Results
+<p align="center">
+  <img src="assets/images/screenshots/Candidate Feedback Feminine Theme.png" width="220" alt="Candidate feedback - Feminine Power theme"/>
+  <img src="assets/images/screenshots/Candidate Feedback Obsidian Theme.png" width="220" alt="Candidate feedback - Obsidian theme"/>
+  <img src="assets/images/screenshots/Candidate Feedback Notes Feminine Theme.png" width="220" alt="Candidate feedback notes"/>
+</p>
+
+### 💬 Quotes
+<p align="center">
+  <img src="assets/images/screenshots/Quotes.png" width="220" alt="Quotes screen"/>
+  <img src="assets/images/screenshots/Favorite Quotes.png" width="220" alt="Favorite quotes filter"/>
+</p>
+
+### ⚙️ Settings
+<p align="center">
+  <img src="assets/images/screenshots/Settings Feminie Theme.png" width="220" alt="Settings - Feminine Power theme"/>
+  <img src="assets/images/screenshots/Settings Obsidian Theme.png" width="220" alt="Settings - Obsidian theme"/>
+</p>
 
 ---
 
