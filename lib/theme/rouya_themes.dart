@@ -53,6 +53,9 @@ class RouyaTheme {
   Color get accent2  => isFeminine ? RouyaColors.femAccent2    : RouyaColors.obsAccent2;
   Color get gold  => isFeminine ? RouyaColors.femGold    : RouyaColors.obsGold;
 
+  // Text color that reads well on top of accent-colored backgrounds
+  Color get onAccent => isFeminine ? Colors.white : RouyaColors.obsBg0;
+
   // Text
   Color get text  => isFeminine ? RouyaColors.femText    : RouyaColors.obsText;
   Color get textDim  => isFeminine ? RouyaColors.femTextDim    : RouyaColors.obsTextDim;
@@ -72,7 +75,7 @@ class RouyaTheme {
   // Glow shadows
   List<BoxShadow> get glowAccent => [
     BoxShadow(color: accent.withValues(alpha: 0.35 * glowMul),
-    blurRadius: 32, spreadRadius: 0)
+        blurRadius: 32, spreadRadius: 0)
   ];
   List<BoxShadow> get glowAccent2 => [
     BoxShadow(color: accent2.withValues(alpha: 0.35 * glowMul),
@@ -88,17 +91,17 @@ class RouyaTheme {
   // Background gradient
   Gradient get bgGradient => isFeminine
       ? const RadialGradient(
-          center: Alignment(-0.6, -0.8),
-          radius: 1.2,
-          colors: [Color(0xFF0F1A1E), Color(0xFF1A0A2E), Color(0xFF0F0420)],
-          stops: [0.0, 0.5, 1.0],
-    )
-    : const RadialGradient(
-        center: Alignment(0.6, -0.8),
-        radius: 1.2,
-        colors: [Color(0xFF0F1A1E), Color(0xFF0D0D0D), Color(0xFF050505)],
-        stops: [0.0, 0.5, 1.0],
-    );
+    center: Alignment(-0.6, -0.8),
+    radius: 1.2,
+    colors: [Color(0xFF0F1A1E), Color(0xFF1A0A2E), Color(0xFF0F0420)],
+    stops: [0.0, 0.5, 1.0],
+  )
+      : const RadialGradient(
+    center: Alignment(0.6, -0.8),
+    radius: 1.2,
+    colors: [Color(0xFF0F1A1E), Color(0xFF0D0D0D), Color(0xFF050505)],
+    stops: [0.0, 0.5, 1.0],
+  );
 
   // Material ThemeData for widgets that need it
   ThemeData get materialTheme => ThemeData(
@@ -114,4 +117,3 @@ class RouyaTheme {
   );
 
 }
-

@@ -14,10 +14,13 @@ class AchievementsScreen extends StatelessWidget {
     final state = context.watch<AppStateProvider>();
     return Scaffold(
       backgroundColor: Colors.transparent,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddSheet(context, state, t),
-        backgroundColor: t.accent,
-        child: const Icon(Icons.add, color: Colors.white),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 0),
+        child: FloatingActionButton(
+          onPressed: () => _showAddSheet(context, state, t),
+          backgroundColor: t.accent,
+          child: Icon(Icons.add, color: t.onAccent),
+        ),
       ),
 
       body: SafeArea(
@@ -102,9 +105,9 @@ class AchievementsScreen extends StatelessWidget {
                   ),
                 )
                     : ListView.separated(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 80),
                   itemCount: state.categories.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 20),
+                  separatorBuilder: (_, __) => const SizedBox(height: 12),
                   itemBuilder: (ctx, i) {
                     final cat = state.categories[i];
                     return _CategoryCard(
@@ -252,7 +255,7 @@ class AchievementsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14)),
                   ),
                   child: Text('Create Category',
-                      style: TextStyle(color: Colors.white, fontSize: 16,
+                      style: TextStyle(color: t.onAccent, fontSize: 16,
                           fontWeight: FontWeight.w600)),
                 ),
               ),
@@ -282,7 +285,7 @@ class _CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: t.surface,
         borderRadius: BorderRadius.circular(t.radius),
@@ -324,8 +327,6 @@ class _CategoryCard extends StatelessWidget {
             ),
           ),
 
-
-
           // - button
           GestureDetector(
             onTap: onDecrement,
@@ -336,7 +337,7 @@ class _CategoryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: t.border),
               ),
-              child: Icon(Icons.remove, color: t.accent2, size: 20),
+              child: Icon(Icons.remove, color: t.text, size: 20),
             ),
           ),
           const SizedBox(width: 8),
@@ -349,7 +350,7 @@ class _CategoryCard extends StatelessWidget {
                 color: t.accent,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Icon(Icons.add, color: Colors.white, size: 20),
+              child: Icon(Icons.add, color: t.onAccent, size: 20),
             ),
           ),
           const SizedBox(width: 8),

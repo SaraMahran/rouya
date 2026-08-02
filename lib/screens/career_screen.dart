@@ -63,8 +63,8 @@ class _CareerScreenState extends State<CareerScreen>
                     ),
                     indicatorSize: TabBarIndicatorSize.tab,
                     dividerColor: Colors.transparent,
-                    labelColor: Colors.white,
-                    unselectedLabelColor: t.textDim,
+                    labelColor: t.onAccent,
+                    unselectedLabelColor: t.text,
                     labelStyle: const TextStyle(
                         fontSize: 13, fontWeight: FontWeight.w600),
                     tabs: const [

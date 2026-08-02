@@ -51,7 +51,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
                     ),
                     Text(
                       '${state.quotes.length} total · '
-                      '${state.quotes.where((q) => q.favorite).length} ★',
+                          '${state.quotes.where((q) => q.favorite).length} ★',
                       style: TextStyle(color: t.textDim, fontSize: 13),
                     ),
                   ],
@@ -80,7 +80,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
                         child: Text(
                           tab,
                           style: TextStyle(
-                            color: active ? Colors.white : t.textDim,
+                            color: active ? t.onAccent : t.textDim,
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
                           ),
@@ -98,24 +98,24 @@ class _QuotesScreenState extends State<QuotesScreen> {
           Expanded(
             child: filtered.isEmpty
                 ? Center(
-                    child: Text(
-                      'No favorites yet',
-                      style: TextStyle(color: t.textDim),
-                    ),
-                  )
+              child: Text(
+                'No favorites yet',
+                style: TextStyle(color: t.textDim),
+              ),
+            )
                 : ListView.separated(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemCount: filtered.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
-                    itemBuilder: (ctx, i) {
-                      final q = filtered[i];
-                      return _QuoteCard(
-                        t: t,
-                        quote: q,
-                        onFav: () => state.toggleFav(q.id),
-                      );
-                    },
-                  ),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemCount: filtered.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 12),
+              itemBuilder: (ctx, i) {
+                final q = filtered[i];
+                return _QuoteCard(
+                  t: t,
+                  quote: q,
+                  onFav: () => state.toggleFav(q.id),
+                );
+              },
+            ),
           ),
         ],
       ),
