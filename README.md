@@ -13,6 +13,12 @@
   <img src="https://img.shields.io/badge/Status-In%20Development-orange" alt="Status In Development" />
 </p>
 
+<p align="center">
+  <a href="https://github.com/SaraMahran/rouya/releases/latest">
+    <img src="https://img.shields.io/badge/Download-APK-success?logo=android&logoColor=white" alt="Download APK" />
+  </a>
+</p>
+
 ---
 
 ## What is Rouya?
@@ -20,6 +26,16 @@
 Rouya (رؤيا — Arabic for *"vision"*) is a personal growth app built for ambitious professionals who want to track their achievements, career journey, teaching experience, and collect meaningful quotes — all in one beautifully designed dark-themed mobile app.
 
 Built by a Senior Software Engineer with 865+ books read, 130+ students mentored, and a passion for building tools that reflect real growth.
+
+---
+
+## Download
+
+Grab the latest APK from the [Releases page](https://github.com/SaraMahran/rouya/releases/latest), or download it directly:
+
+```
+https://github.com/SaraMahran/rouya/releases/download/v1.0.0/app-release.apk
+```
 
 ---
 
